@@ -3,7 +3,7 @@
 <p>大多数人都会说用过，然后就说一些HashMap的特性：<br>1、可以接受null值而Hashtable不行；<br>2、HashMap是非同步的（synchronized）；<br>3、HashMap很快；<br>4、HashMap储存的是键值对。。。</p>
 <p>没毛病啊，但是接下来，面试官开始深挖了</p>
 <p>“你知道HashMap的工作原理吗？get()方法的工作原理呢？”</p>
-<p>这是我想甩给面试官一份java API。。。<br>他应该会让我直接走吧</p>
+<p>这时我想甩给面试官一份java API。。。<br>他应该会让我直接走吧</p>
 <p>那么我们这样回答：<br>HashMap是基于hashing原理，我们使用put(key,value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。当我们给put()方法传递键和值时，我们先对键调用hashCode()方法，返回的hashCode用于找到bucket位置来储存Entry对象。<br>我们指出，HashMap是在bucket中储存键对象和值对象，作为Map.Entry。这时，面试官点点头，看来还是有点料的，然后他继续问：</p>
 <p>“当两个对象的hashcode相同会发生什么？”</p>
 <p>这时问的就是HashMap的碰撞探测了，我们知道，hashCode是jdk根据对象的地址或者字符串或者数字算出来的int类型的数值，至于怎么算反正我是不知道的，但是我们要知道的一点是，基于这种算法，会出现两个不同的值hashCode相同的情况（我们不喜欢这种情况发生，这样调用总会有点麻烦，但有时无法避免），所以呢，就有equals为false是hashcode仍然相同的情况发生。</p>
